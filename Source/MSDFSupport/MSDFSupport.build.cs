@@ -50,8 +50,8 @@ public class MSDFSupport : ModuleRules
         // msdfgen source code requires a number of warnings to be squashed. We do this by wrapping the cpp files with our own preamble and epilogue.
         // In addition to importing modified source files, we also pull the msdfgen headers into our own tree, so that if the plugin is packaged, we don't need the submodule.
         // Only do the regeneration of the generated sources if the msdfgen code is present as a submodule, otherwise we assume its static code that will never change
-        CopyCommonGeneratedSource(GeneratedSourcePath);
-        CopyCommonGeneratedHeaders(GeneratedHeaderPath);
+        //CopyCommonGeneratedSource(GeneratedSourcePath);
+        //CopyCommonGeneratedHeaders(GeneratedHeaderPath);
         AddCommonGeneratedSource(GeneratedSourcePath);
         AddCommonGeneratedHeaders(GeneratedHeaderPath);
 
