@@ -92,8 +92,9 @@ Doc/latex/*
 
 Source/Platforms/*
 
-
+Source/ThirdParty/NativeSDK
 Source/ThirdParty/NativeSDK/**
+Source/ThirdParty/liburing
 Source/ThirdParty/liburing/**
 Source/ThirdParty/mbedtls/**
 Source/ThirdParty/GeneratedMSDFgen/**
