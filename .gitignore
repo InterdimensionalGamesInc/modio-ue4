@@ -97,5 +97,4 @@ Source/ThirdParty/NativeSDK/**
 Source/ThirdParty/liburing
 Source/ThirdParty/liburing/**
 Source/ThirdParty/mbedtls/**
-Source/ThirdParty/GeneratedMSDFgen/**
-Source/ThirdParty/GeneratedNativeSDK/**
+
