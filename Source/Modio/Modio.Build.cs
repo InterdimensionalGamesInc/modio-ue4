@@ -405,9 +405,9 @@ public class Modio : ModuleRules
 
         // When using the native SDK as a submodule, transform the SDK source into paths and files that UBT understands
         // These are all no-ops in marketplace builds or anywhere with 'baked' source files
-        CopyCommonGeneratedSource(GeneratedSourcePath);
-        CopyPlatformGeneratedSource(GeneratedSourcePath);
-        CopyCommonGeneratedHeaders(GeneratedHeaderPath);
+        //CopyCommonGeneratedSource(GeneratedSourcePath);
+        //CopyPlatformGeneratedSource(GeneratedSourcePath);
+        //CopyCommonGeneratedHeaders(GeneratedHeaderPath);
 
         // Configure the module with the common headers, modules and compiler defines
         AddCommonHeaderPaths(GeneratedHeaderPath);
