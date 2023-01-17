@@ -405,19 +405,28 @@ protected:
 
 	FReply LeftWidgetClickedHandler()
 	{
-		OnLeftWidgetClicked.Execute(LeftCarouselWidget, ItemsSource[GetLeftWidgetIndex(WidgetIndex)]);
+		if(ItemsSource.Num())
+		{
+			OnLeftWidgetClicked.Execute(LeftCarouselWidget, ItemsSource[GetLeftWidgetIndex(WidgetIndex)]);
+		}
 		return FReply::Handled();
 	}
 
 	FReply CenterWidgetClickedHandler()
 	{
-		OnCenterWidgetClicked.Execute(CenterCarouselWidget, ItemsSource[WidgetIndex]);
+		if(ItemsSource.Num())
+		{
+			OnCenterWidgetClicked.Execute(CenterCarouselWidget, ItemsSource[WidgetIndex]);
+		}
 		return FReply::Handled();
 	}
 
 	FReply RightWidgetClickedHandler()
 	{
-		OnRightWidgetClicked.Execute(RightCarouselWidget, ItemsSource[GetRightWidgetIndex(WidgetIndex)]);
+		if(ItemsSource.Num())
+		{
+			OnRightWidgetClicked.Execute(RightCarouselWidget, ItemsSource[GetRightWidgetIndex(WidgetIndex)]);
+		}
 		return FReply::Handled();
 	}
 
@@ -481,13 +490,16 @@ protected:
 
 	virtual void GenerateItemWidgets()
 	{
-		LeftCarouselWidget->SetContent(OnGenerateWidget.Execute(ItemsSource[GetLeftWidgetIndex(WidgetIndex)]));
-		CenterCarouselWidget->SetContent(OnGenerateWidget.Execute(ItemsSource[WidgetIndex]));
-		RightCarouselWidget->SetContent(OnGenerateWidget.Execute(ItemsSource[GetRightWidgetIndex(WidgetIndex)]));
-		// Incoming widget is just the next one again
-		IncomingWidget->SetContent(
-			OnGenerateWidget.Execute(ItemsSource[GetRightWidgetIndex(GetRightWidgetIndex(WidgetIndex))]));
-		UpdateSelection();
+		if(ItemsSource.Num())
+		{
+			LeftCarouselWidget->SetContent(OnGenerateWidget.Execute(ItemsSource[GetLeftWidgetIndex(WidgetIndex)]));
+			CenterCarouselWidget->SetContent(OnGenerateWidget.Execute(ItemsSource[WidgetIndex]));
+			RightCarouselWidget->SetContent(OnGenerateWidget.Execute(ItemsSource[GetRightWidgetIndex(WidgetIndex)]));
+			// Incoming widget is just the next one again
+			IncomingWidget->SetContent(
+				OnGenerateWidget.Execute(ItemsSource[GetRightWidgetIndex(GetRightWidgetIndex(WidgetIndex))]));
+			UpdateSelection();
+		}
 	}
 
 	virtual void PopulateWidgetContainer()
@@ -554,6 +566,11 @@ protected:
 
 	virtual void MoveInDirection(EModioUIDirection Direction)
 	{
+		if(!ItemsSource.Num())
+		{
+			return;
+		}
+		
 		if (Direction == EModioUIDirection::MoveLeft)
 		{
 			WidgetIndex = GetLeftWidgetIndex(WidgetIndex);

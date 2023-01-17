@@ -262,7 +262,7 @@ public:
 	void SetControllerOverrideType(EModioUIInputMode NewOverride);
 
 	UFUNCTION(BlueprintCallable, Category = "ModioUISubsystem")
-	UModioMenu* ShowModBrowserUIForPlayer(TSubclassOf<UModioMenu> MenuClass, APlayerController* Controller,
+	UModioMenu* ShowModBrowserUIForPlayer(TSubclassOf<UModioMenu> MenuClass, APlayerController* Controller, bool addToViewport,
 										  FOnModBrowserClosed BrowserClosedDelegate);
 
 	/// @brief Sends a command to the browser UI in the form of a virtual keypress

@@ -419,7 +419,7 @@ void UModioUISubsystem::SetControllerOverrideType(EModioUIInputMode NewOverride)
 }
 
 UModioMenu* UModioUISubsystem::ShowModBrowserUIForPlayer(TSubclassOf<UModioMenu> MenuClass,
-														 APlayerController* Controller,
+														 APlayerController* Controller, bool addToViewport,
 														 FOnModBrowserClosed BrowserClosedDelegate)
 {
 	if (UModioUISettings* Settings = UModioUISettings::StaticClass()->GetDefaultObject<UModioUISettings>())
@@ -427,7 +427,10 @@ UModioMenu* UModioUISubsystem::ShowModBrowserUIForPlayer(TSubclassOf<UModioMenu>
 		if (MenuClass)
 		{
 			ModBrowserInstance = CreateWidget<UModioMenu>(Controller, MenuClass);
-			ModBrowserInstance->AddToViewport();
+			if(addToViewport)
+			{
+				ModBrowserInstance->AddToViewport();
+			}
 			OnModBrowserClosed = BrowserClosedDelegate;
 			OwningPlayerController = Controller;
 			return ModBrowserInstance;
