@@ -1009,5 +1009,11 @@ public:
 	UFUNCTION(BlueprintCallable, DisplayName = "ArchiveModAsync", Category = "mod.io|Mods")
 	MODIO_API void K2_ArchiveModAsync(FModioModID Mod, FOnErrorOnlyDelegate Callback);
 
+	UFUNCTION(BlueprintPure, DisplayName = "Get Mod ID From Raw Int64", Category = "mod.io|Mods")
+	MODIO_API FModioModID GetModIDFromRawInt64(const int64 rawInt64) const
+	{
+		return FModioModID(rawInt64);
+	}
+
 #pragma endregion
 };
