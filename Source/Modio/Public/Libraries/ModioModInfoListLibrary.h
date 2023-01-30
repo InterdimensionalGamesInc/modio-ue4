@@ -20,7 +20,7 @@ UCLASS()
 class MODIO_API UModioModInfoListLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-
+public:
 	/**
 	 * Get the mods in a mod info list
 	 * @param ModInfoList

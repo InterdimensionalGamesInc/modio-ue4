@@ -26,7 +26,7 @@ UCLASS()
 class MODIO_API UModioOptionalLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-
+public:
 	/**
 	 * Check if the mod info list has a valid value
 	 *

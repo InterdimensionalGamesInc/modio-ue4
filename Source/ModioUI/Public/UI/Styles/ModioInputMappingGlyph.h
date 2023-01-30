@@ -87,7 +87,7 @@ UCLASS()
 class UModioInputMappingGlyphLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-
+public:
 	/**
 	* Retrieve the 2D texture related to the input mode
 	* @param MappingGlyph Dictionary that stores references available glyphs

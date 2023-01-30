@@ -24,7 +24,7 @@ UCLASS()
 class MODIO_API UModioEditModLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-
+public:
 	UFUNCTION(BlueprintCallable, Category = "mod.io|Edit Mod Params")
 	static void SetName(UPARAM(ref) FModioEditModParams& In, FString Name);
 

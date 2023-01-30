@@ -20,7 +20,7 @@ UCLASS()
 class MODIO_API UModioModTagOptionsLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
-
+public:
 	/**
 	 * Get the tags in a mod tag options list
 	 * @param ModTags 

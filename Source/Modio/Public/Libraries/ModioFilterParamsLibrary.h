@@ -22,6 +22,8 @@ class MODIO_API UModioFilterParamsLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
 
+public:
+
 	/**
 	 * @brief Indicates the filter should only include the specified mods
 	 * @param IDs the set of mods to match

@@ -25,6 +25,7 @@ UCLASS()
 class MODIO_API UModioReportLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_BODY()
+public:
 	/// @brief Creates a content report for a game.
 	/// @param Game The ID of the game being reported
 	/// @param Type The nature of the content report

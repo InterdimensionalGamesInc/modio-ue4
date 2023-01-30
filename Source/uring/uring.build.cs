@@ -48,7 +48,35 @@ public class uring : ModuleRules
                 }
             }
             {
-                string CompatHeader = @"/* SPDX-License-Identifier: MIT */
+                string CompatHeader;
+                if (Target.Platform == UnrealTargetPlatform.Android)
+                {
+                    CompatHeader = @"/* SPDX-License-Identifier: MIT */
+#ifndef LIBURING_COMPAT_H
+#define LIBURING_COMPAT_H
+
+#include <stdint.h>
+#include <endian.h>
+
+# include <inttypes.h>
+
+    struct open_how
+    {
+        uint64_t flags;
+        uint64_t mode;
+        uint64_t resolve;
+    };
+
+#ifndef __kernel_rwf_t
+    typedef int __kernel_rwf_t;
+#endif
+
+#endif
+";
+                }
+                else
+                {
+                    CompatHeader = @"/* SPDX-License-Identifier: MIT */
 #ifndef LIBURING_COMPAT_H
 #define LIBURING_COMPAT_H
 
@@ -76,6 +104,7 @@ struct __kernel_timespec
 
 #endif
 ";
+                }
                 string CompatHeaderPath = Path.Combine(ModuleDirectory, "Public", "liburing");
                 Directory.CreateDirectory(CompatHeaderPath);
                 File.WriteAllText(Path.Combine(CompatHeaderPath, "compat.h"), CompatHeader);
