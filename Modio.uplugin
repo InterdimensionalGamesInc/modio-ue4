@@ -20,47 +20,8 @@
 			"WhitelistPlatforms": [
 				"Win64",
 				"Mac",
-				"Linux"
-			]
-		},
-		{
-			"Name": "ModioEx",
-			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"WhitelistPlatforms": [
-				"Win64",
-				"Mac",
-				"Linux"
-			]
-		},
-		{
-			"Name": "ModioUI",
-			"Type": "Runtime",
-			"LoadingPhase": "Default",
-			"WhitelistPlatforms": [
-				"Win64",
-				"Mac",
-				"Linux"
-			]
-		},
-		{
-			"Name": "ModioTests",
-			"Type": "Editor",
-			"LoadingPhase": "Default",
-			"WhitelistPlatforms": [
-				"Win64",
-				"Mac",
-				"Linux"
-			]
-		},
-		{
-			"Name": "ModioUIEditor",
-			"Type": "Editor",
-			"LoadingPhase": "PostEngineInit",
-			"WhitelistPlatforms": [
-				"Win64",
-				"Mac",
-				"Linux"
+				"Linux",
+				"Android"
 			]
 		},
 		{
@@ -80,7 +41,8 @@
 			"WhitelistPlatforms": [
 				"Win64",
 				"Mac",
-				"Linux"
+				"Linux",
+				"Android"
 			]
 		},
 		{
@@ -88,7 +50,8 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"WhitelistPlatforms": [
-				"Linux"
+				"Linux",
+				"Android"
 			]
 		},
 		{
@@ -96,14 +59,9 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"WhitelistPlatforms": [
-				"Linux"
+				"Linux",
+				"Android"
 			]
-		}
-	],
-	"LocalizationTargets": [
-		{
-			"Name": "ModioUI",
-			"LoadingPolicy": "Always"
 		}
 	]
 }
