@@ -72,7 +72,7 @@ FString UModioCommonTypesLibrary::Conv_UserIDToString(FModioUserID UserID)
 	return UserID.ToString();
 }
 
-FModioInitializeOptions UModioCommonTypesLibrary::MakeInitializeOptions(int64 GameId, const FString& APIKey,
+FModioInitializeOptions UModioCommonTypesLibrary::MakeInitializeOptions(int64 GameId, const FString& APIKey, const FString& CTModRootDirectory,
 																		EModioEnvironment GameEnvironment,
 																		EModioPortal PortalInUse)
 {
@@ -81,6 +81,7 @@ FModioInitializeOptions UModioCommonTypesLibrary::MakeInitializeOptions(int64 Ga
 	Options.ApiKey = FModioApiKey(APIKey);
 	Options.GameEnvironment = GameEnvironment;
 	Options.PortalInUse = PortalInUse;
+	Options.CTModRootDirectory = CTModRootDirectory;
 	return Options;
 }
 

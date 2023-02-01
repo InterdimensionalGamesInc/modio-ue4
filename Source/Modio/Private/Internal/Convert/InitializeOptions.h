@@ -79,5 +79,8 @@ FORCEINLINE Modio::InitializeOptions ToModio(const FModioInitializeOptions& In )
 	Options.User = ToModio(In.LocalSessionIdentifier.GetValue());
 	#endif
     Options.PortalInUse = ToModio(In.PortalInUse);
+	
+	Options.CTModRootDirectory = Modio::filesystem::path(*In.CTModRootDirectory);
+	
     return Options;
 }

@@ -144,7 +144,7 @@ public:
 	 * @param GameEnvironment - If your environment is setup on test or production
 	 */
 	UFUNCTION(BlueprintPure, category = "mod.io|Utilities", meta = (NativeMakeFunc))
-	static FModioInitializeOptions MakeInitializeOptions(int64 GameId, const FString& APIKey,
+	static FModioInitializeOptions MakeInitializeOptions(int64 GameId, const FString& APIKey, const FString& CTModRootDirectory,
 														 EModioEnvironment GameEnvironment,
 														 EModioPortal PortalInUse = EModioPortal::None);
 
