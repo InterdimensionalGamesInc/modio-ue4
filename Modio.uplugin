@@ -50,8 +50,7 @@
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
 			"WhitelistPlatforms": [
-				"Linux",
-				"Android"
+				"Linux"
 			]
 		},
 		{
