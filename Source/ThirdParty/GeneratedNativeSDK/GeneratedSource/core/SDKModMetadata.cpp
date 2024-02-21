@@ -26,6 +26,8 @@
 #include "modio/detail/ops/mod/GetModMediaGalleryOp.h"
 #include "modio/detail/ops/mod/GetModMediaLogoOp.h"
 #include "modio/detail/ops/mod/GetModTagsOp.h"
+#include "modio/detail/ops/mod/AddModTagOp.h"
+#include "modio/detail/ops/mod/DeleteModTagOp.h"
 #include "modio/detail/ops/mod/ListAllModsOp.h"
 #include "modio/detail/ops/mod/ListUserCreatedModsOp.h"
 #include "modio/detail/ops/mod/SubmitModRatingOp.h"
@@ -131,6 +133,28 @@ namespace Modio
 			return asio::async_compose<std::function<void(Modio::ErrorCode, Modio::Optional<Modio::ModTagOptions>)>,
 									   void(Modio::ErrorCode, Modio::Optional<Modio::ModTagOptions>)>(
 				Modio::Detail::GetModTagsOp(), Callback, Modio::Detail::Services::GetGlobalContext().get_executor());
+		}
+	}
+
+	void AddModTagAsync(Modio::ModID ModID, std::string TagName, std::function<void(Modio::ErrorCode)> Callback)
+	{
+		if (Modio::Detail::RequireSDKIsInitialized(Callback) && Modio::Detail::RequireNotRateLimited(Callback) &&
+			Modio::Detail::RequireUserIsAuthenticated(Callback))
+		{
+			return asio::async_compose<std::function<void(Modio::ErrorCode)>, void(Modio::ErrorCode)>(
+				Modio::Detail::AddModTagOp(Modio::Detail::SDKSessionData::CurrentGameID(), ModID, TagName), Callback,
+				Modio::Detail::Services::GetGlobalContext().get_executor());
+		}
+	}
+
+	void DeleteModTagAsync(Modio::ModID ModID, std::string TagName, std::function<void(Modio::ErrorCode)> Callback)
+	{
+		if (Modio::Detail::RequireSDKIsInitialized(Callback) && Modio::Detail::RequireNotRateLimited(Callback) &&
+			Modio::Detail::RequireUserIsAuthenticated(Callback))
+		{
+			return asio::async_compose<std::function<void(Modio::ErrorCode)>, void(Modio::ErrorCode)>(
+				Modio::Detail::DeleteModTagOp(Modio::Detail::SDKSessionData::CurrentGameID(), ModID, TagName), Callback,
+				Modio::Detail::Services::GetGlobalContext().get_executor());
 		}
 	}
 

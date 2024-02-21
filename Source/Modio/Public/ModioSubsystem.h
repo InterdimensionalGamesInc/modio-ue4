@@ -530,6 +530,35 @@ public:
 	 * @error UserDataError::InvalidUser|No authenticated user
 	 */
 	MODIO_API void SubmitModRatingAsync(FModioModID Mod, EModioRating Rating, FOnErrorOnlyDelegateFast Callback);
+	
+	/// @brief Submits a new tag to a games mod
+	/// @param ModID The mod to submit a tag for
+	/// @param TagName The tag to add
+	/// @param Callback Callback providing a status code to indicate the tag was added successfully
+	/// @requires initialized-sdk
+	/// @requires no-rate-limiting
+	/// @requires authenticated-user
+	/// @errorcategory NetworkError|Couldn't connect to mod.io servers
+	/// @error GenericError::SDKNotInitialized|SDK not initialized
+	/// @errorcategory EntityNotFoundError|Specified mod could not be found
+	/// @error UserDataError::InvalidUser|No authenticated user
+	/// @error HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+	MODIO_API void AddModTagAsync(FModioModID ModID, FString TagName, FOnErrorOnlyDelegateFast Callback);
+
+	/// @docpublic
+	/// @brief Deletes a tag from a mod
+	/// @param ModID The mod to deleta a tag from
+	/// @param TagName The tag to delete
+	/// @param Callback Callback providing a status code to indicate the tag was deleted successfully
+	/// @requires initialized-sdk
+	/// @requires no-rate-limiting
+	/// @requires authenticated-user
+	/// @errorcategory NetworkError|Couldn't connect to mod.io servers
+	/// @error GenericError::SDKNotInitialized|SDK not initialized
+	/// @errorcategory EntityNotFoundError|Specified mod could not be found
+	/// @error UserDataError::InvalidUser|No authenticated user
+	/// @error HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+	MODIO_API void DeleteModTagAsync(FModioModID ModID, FString TagName, FOnErrorOnlyDelegateFast Callback);
 
 	/**
 	 * @brief Sends a content report to mod.io. When using this function, please inform your users that if they provide
@@ -914,6 +943,37 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable, DisplayName = "SubmitModRatingAsync", Category = "mod.io|Mods")
 	MODIO_API void K2_SubmitModRatingAsync(FModioModID Mod, EModioRating Rating, FOnErrorOnlyDelegate Callback);
+
+	/// @brief Submits a new tag to a games mod
+	/// @param ModID The mod to submit a tag for
+	/// @param TagName The tag to add
+	/// @param Callback Callback providing a status code to indicate the tag was added successfully
+	/// @requires initialized-sdk
+	/// @requires no-rate-limiting
+	/// @requires authenticated-user
+	/// @errorcategory NetworkError|Couldn't connect to mod.io servers
+	/// @error GenericError::SDKNotInitialized|SDK not initialized
+	/// @errorcategory EntityNotFoundError|Specified mod could not be found
+	/// @error UserDataError::InvalidUser|No authenticated user
+	/// @error HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+	UFUNCTION(BlueprintCallable, DisplayName = "AddModTagAsync", Category = "mod.io|Mods")
+	MODIO_API void K2_AddModTagAsync(FModioModID ModID, FString TagName, FOnErrorOnlyDelegate Callback);
+
+	/// @docpublic
+	/// @brief Deletes a tag from a mod
+	/// @param ModID The mod to deleta a tag from
+	/// @param TagName The tag to delete
+	/// @param Callback Callback providing a status code to indicate the tag was deleted successfully
+	/// @requires initialized-sdk
+	/// @requires no-rate-limiting
+	/// @requires authenticated-user
+	/// @errorcategory NetworkError|Couldn't connect to mod.io servers
+	/// @error GenericError::SDKNotInitialized|SDK not initialized
+	/// @errorcategory EntityNotFoundError|Specified mod could not be found
+	/// @error UserDataError::InvalidUser|No authenticated user
+	/// @error HttpError::RateLimited|Too many frequent calls to the API. Wait some time and try again.
+	UFUNCTION(BlueprintCallable, DisplayName = "DeleteModTagAsync", Category = "mod.io|Mods")
+	MODIO_API void K2_DeleteModTagAsync(FModioModID ModID, FString TagName, FOnErrorOnlyDelegate Callback);
 
 	/**
 	 * @brief Gets a new mod handle for use with SubmitNewModAsync.

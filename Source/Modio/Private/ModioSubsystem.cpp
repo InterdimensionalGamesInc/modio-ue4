@@ -592,9 +592,35 @@ void UModioSubsystem::SubmitModRatingAsync(FModioModID Mod, EModioRating Rating,
 								[Callback](FModioErrorCode ec) { Callback.ExecuteIfBound(ec); });
 }
 
+void UModioSubsystem::AddModTagAsync(FModioModID ModID, FString TagName, FOnErrorOnlyDelegateFast Callback)
+{
+	Modio::AddModTagAsync(ToModio(ModID), ToModio(TagName),
+								[Callback](FModioErrorCode ec) { Callback.ExecuteIfBound(ec); });
+}
+
+void UModioSubsystem::DeleteModTagAsync(FModioModID ModID, FString TagName, FOnErrorOnlyDelegateFast Callback)
+{
+	Modio::DeleteModTagAsync(ToModio(ModID), ToModio(TagName),
+								[Callback](FModioErrorCode ec) { Callback.ExecuteIfBound(ec); });
+}
+
 void UModioSubsystem::K2_SubmitModRatingAsync(FModioModID Mod, EModioRating Rating, FOnErrorOnlyDelegate Callback)
 {
 	SubmitModRatingAsync(Mod, Rating, FOnErrorOnlyDelegateFast::CreateLambda([Callback](FModioErrorCode ec) {
+							 Callback.ExecuteIfBound(ec);
+						 }));
+}
+
+void UModioSubsystem::K2_AddModTagAsync(FModioModID ModID, FString TagName, FOnErrorOnlyDelegate Callback)
+{
+	AddModTagAsync(ModID, TagName, FOnErrorOnlyDelegateFast::CreateLambda([Callback](FModioErrorCode ec) {
+							 Callback.ExecuteIfBound(ec);
+						 }));
+}
+
+void UModioSubsystem::K2_DeleteModTagAsync(FModioModID ModID, FString TagName, FOnErrorOnlyDelegate Callback)
+{
+	DeleteModTagAsync(ModID, TagName, FOnErrorOnlyDelegateFast::CreateLambda([Callback](FModioErrorCode ec) {
 							 Callback.ExecuteIfBound(ec);
 						 }));
 }
